@@ -10,7 +10,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 //@Service
 @Slf4j
@@ -28,16 +30,16 @@ public class UserRequestStep extends BaseRequestStep {
 //        List<User> users = doGetRequest("users", StatusCode.OK, requestSpec.requestSpecification);
     }
 
-//    @Step("Получить пользователя с ID: {id}")
-//    public User getUserById(int id, RequestSpec requestSpec) {
-//        Map<String, String> pathParams = new HashMap<>();
-//        pathParams.put("id", String.valueOf(id));
-//        return jsonFormatter.transFormToObject(
-//                doGetRequestWithParam(userEndPoints.GET_USER_BY_ID, pathParams,
-//                        StatusCode.OK,
-//                        requestSpec.requestSpecification
-//                ), User.class);
-////        List<User> users = doGetRequest("users", StatusCode.OK, requestSpec.requestSpecification);
-//    }
+    @Step("Получить пользователя с ID: {id}")
+    public User getUserById(int id, RequestSpec requestSpec) {
+        Map<String, String> pathParams = new HashMap<>();
+        pathParams.put("id", String.valueOf(id));
+        return jsonFormatter.transFormToObject(
+                doGetRequestWithParam(userEndPoints.GET_USER_BY_ID, pathParams,
+                        StatusCode.OK,
+                        requestSpec.requestSpecification
+                ), User.class);
+//        List<User> users = doGetRequest("users", StatusCode.OK, requestSpec.requestSpecification);
+    }
 
 }

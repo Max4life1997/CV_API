@@ -8,15 +8,14 @@ import com.example.cvapi2.helper.JsonDTOFormatter;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//@Service
+@Service
 @Slf4j
-@Component
 public class UserRequestStep extends BaseRequestStep {
 
     @Autowired
@@ -27,7 +26,6 @@ public class UserRequestStep extends BaseRequestStep {
     @Step("Получить всех пользователей")
     public List<User> getAllUsers(RequestSpec requestSpec) {
         return jsonFormatter.transFormToListObject(doGetRequest(userEndPoints.GET_ALL_USERS, StatusCode.OK, requestSpec.requestSpecification), User.class);
-//        List<User> users = doGetRequest("users", StatusCode.OK, requestSpec.requestSpecification);
     }
 
     @Step("Получить пользователя с ID: {id}")
@@ -39,7 +37,6 @@ public class UserRequestStep extends BaseRequestStep {
                         StatusCode.OK,
                         requestSpec.requestSpecification
                 ), User.class);
-//        List<User> users = doGetRequest("users", StatusCode.OK, requestSpec.requestSpecification);
     }
 
 }

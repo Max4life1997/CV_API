@@ -5,11 +5,13 @@ import com.example.cvapi2.data.dto.User;
 import com.example.cvapi2.steps.assertions.UserAssertionsStep;
 import com.example.cvapi2.steps.requests.UserRequestStep;
 import com.example.cvapi2.test.api.BaseTest;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
-
+@DisplayName("Пользователи")
+@Tag("users")
 public class UserPositiveTest extends BaseTest {
 
 
@@ -20,6 +22,8 @@ public class UserPositiveTest extends BaseTest {
     UserAssertionsStep userAssertionsStep;
 
     @Test
+    @DisplayName("Проверка вызова пользователя по ID")
+    @Tag("byId")
     public void checkUserByID() {
         UserConstant userConstant = new UserConstant();
         User testUser = userConstant.getTestUser();
@@ -28,9 +32,5 @@ public class UserPositiveTest extends BaseTest {
         userAssertionsStep.assertUser(testUser, responseUser);
     }
 
-    @Test
-    public void checkAllUser() {
-        List<User> user = userRequestStep.getAllUsers(requestSpec);
-    }
 
 }

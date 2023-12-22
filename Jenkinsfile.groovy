@@ -27,7 +27,7 @@ pipeline {
             steps {
                 container('maven') {
                     script {
-
+                       sh 'clean test -Dspring.profiles.active=TEST'
                     }
                 }
             }

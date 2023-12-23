@@ -1,6 +1,9 @@
 pipeline {
     agent {
-        docker 'maven:3.8.1-adoptopenjdk-11'
+        docker {
+            image 'node:lts-buster-slim'
+            args '-p 8989:8989'
+        }
     }
 
     stages {
